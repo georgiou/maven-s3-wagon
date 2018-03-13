@@ -76,12 +76,21 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <artifactSet>
-                                <includes>
-                                    <include>*:*</include>
-                                </includes>
-                            </artifactSet>
-                            <promoteTransitiveDependencies>true</promoteTransitiveDependencies>
+                          <artifactSet>
+                            <includes>
+                              <include>com.amazonaws:aws-java-sdk</include>
+                              <include>org.kuali.common:kuali-s3</include>
+                              <include>org.kuali.common:kuali-threads</include>
+                              <include>*:*</include>
+                            </includes>
+                            <excludes>
+                              <exclude>org.slf4j:*</exclude>
+                              <exclude>log4j:log4j:jar:</exclude>
+                            </excludes>
+                          </artifactSet>
+                          <minimizeJar>true</minimizeJar>
+                          <shadedArtifactAttached>true</shadedArtifactAttached>
+                          <shadedClassifierName>shaded</shadedClassifierName>
                         </configuration>
                     </execution>
                 </executions>
